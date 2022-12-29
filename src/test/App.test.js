@@ -17,9 +17,11 @@ const {
   ONE_TIME,
   TWO_TIMES,
   THREE_TIMES,
+  FOUR_TIMES,
   FIFTEEN_ALL,
   THIRTY_ALL,
   DEUCE,
+  PLAYER_ONE_ADVANTAGE,
 } = testConstants;
 
 beforeEach(() => {
@@ -105,4 +107,11 @@ test("When the running point of both the players is 3 then the running score sho
   playerTwoScores(THREE_TIMES);
 
   gameScoreShouldBe(DEUCE);
+});
+
+test("When the running point of player one is greater than or equal to 4 and greater than  player two score by 1 then declare player one as Advantage", () => {
+  playerOneScores(FOUR_TIMES);
+  playerTwoScores(THREE_TIMES);
+
+  gameScoreShouldBe(PLAYER_ONE_ADVANTAGE);
 });

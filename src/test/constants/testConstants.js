@@ -13,9 +13,11 @@ const testConstants = {
   ONE_TIME: 1,
   TWO_TIMES: 2,
   THREE_TIMES: 3,
+  FOUR_TIMES: 4,
   FIFTEEN_ALL: "Fifteen-All",
   THIRTY_ALL: "Thirty-All",
   DEUCE: "Deuce",
+  PLAYER_ONE_ADVANTAGE: "Player One Advantage",
 };
 
 export { testConstants };

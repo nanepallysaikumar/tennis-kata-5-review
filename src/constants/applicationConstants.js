@@ -19,6 +19,7 @@ const score = {
   FIFTEEN_ALL: "Fifteen-All",
   THIRTY_ALL: "Thirty-All",
   DEUCE: "Deuce",
+  PLAYER_ONE_ADVANTAGE: "Player One Advantage",
 };
 
 const scoreLookUp = {
