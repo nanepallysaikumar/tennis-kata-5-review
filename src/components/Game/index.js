@@ -15,14 +15,17 @@ const {
   POINT_THREE,
   TITLE,
 } = applicationConstants;
-const { LOVE_ALL } = score;
+const { LOVE_ALL, LOVE_FIFTEEN } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
   const [playerOneScore, setPlayerOneScore] = useState(POINT_ZERO);
+  const [playerTwoScore, setPlayerTwoScore] = useState(POINT_ZERO);
 
-  const incrementScore = () => {
-    setPlayerOneScore(playerOneScore + POINT_ONE);
+  const incrementScore = (player) => {
+    player === PLAYER_ONE
+      ? setPlayerOneScore(playerOneScore + POINT_ONE)
+      : setPlayerTwoScore(playerTwoScore + POINT_ONE);
   };
 
   const isPlayerOneScoreBetweenOneAndThree = () => {
@@ -30,8 +33,10 @@ const Game = () => {
   };
 
   const calculateGameScore = () => {
-    if (isPlayerOneScoreBetweenOneAndThree()) {
+    if (isPlayerOneScoreBetweenOneAndThree() && playerTwoScore === POINT_ZERO) {
       return `${scoreLookUp[playerOneScore]}-Love`;
+    } else if (playerOneScore === POINT_ZERO && playerTwoScore === POINT_ONE) {
+      return LOVE_FIFTEEN;
     }
   };
 
@@ -39,24 +44,32 @@ const Game = () => {
     setGameScore(calculateGameScore());
   };
 
-  const isPlayerStartedScoring = () => {
-    return playerOneScore > POINT_ZERO;
+  const hasPlayersStartedScoring = () => {
+    return playerOneScore > POINT_ZERO || playerTwoScore > POINT_ZERO;
   };
 
   useEffect(() => {
-    if (isPlayerStartedScoring()) {
+    if (hasPlayersStartedScoring()) {
       updateScore();
     }
-  }, [playerOneScore]);
+  }, [playerOneScore, playerTwoScore]);
 
   return (
     <React.Fragment>
       <h1>{TITLE}</h1>
       <p data-testid={GAME_SCORE}>{gameScore}</p>
-      <button data-testid={PLAYER_ONE} onClick={incrementScore}>
+      <button
+        data-testid={PLAYER_ONE}
+        onClick={() => incrementScore(PLAYER_ONE)}
+      >
         {PLAYER_ONE}
       </button>
-      <button>{PLAYER_TWO}</button>
+      <button
+        data-testid={PLAYER_TWO}
+        onClick={() => incrementScore(PLAYER_TWO)}
+      >
+        {PLAYER_TWO}
+      </button>
     </React.Fragment>
   );
 };
