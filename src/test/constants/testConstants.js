@@ -8,6 +8,7 @@ const testConstants = {
   FORTY_LOVE: "Forty-Love",
   LOVE_FIFTEEN: "Love-Fifteen",
   LOVE_THIRTY: "Love-Thirty",
+  LOVE_FORTY: "Love-Forty",
   ZERO: 0,
   ONE_TIME: 1,
   TWO_TIMES: 2,
