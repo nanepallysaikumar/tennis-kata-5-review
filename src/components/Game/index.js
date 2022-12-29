@@ -12,9 +12,10 @@ const {
   POINT_TWO,
   PLAYER_ONE,
   PLAYER_TWO,
+  POINT_THREE,
   TITLE,
 } = applicationConstants;
-const { LOVE_ALL, FIFTEEN_LOVE, THIRTY_LOVE } = score;
+const { LOVE_ALL, FIFTEEN_LOVE, THIRTY_LOVE, FORTY_LOVE } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -29,6 +30,8 @@ const Game = () => {
       return FIFTEEN_LOVE;
     } else if (playerOneScore === POINT_TWO) {
       return THIRTY_LOVE;
+    } else if (playerOneScore === POINT_THREE) {
+      return FORTY_LOVE;
     }
   };
 

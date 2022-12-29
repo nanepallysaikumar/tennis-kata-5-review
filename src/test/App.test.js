@@ -7,10 +7,12 @@ const {
   LOVE_ALL,
   FIFTEEN_LOVE,
   THIRTY_LOVE,
+  FORTY_LOVE,
   PLAYER_ONE,
   ZERO,
   ONE_TIME,
   TWO_TIMES,
+  THREE_TIMES,
 } = testConstants;
 
 beforeEach(() => {
@@ -43,4 +45,10 @@ test("When the running point of player one is 2 then the running score should be
   playerOneScores(TWO_TIMES);
 
   gameScoreShouldBe(THIRTY_LOVE);
+});
+
+test("When the running point of player one is 3 then the running score should be Forty-Love", () => {
+  playerOneScores(THREE_TIMES);
+
+  gameScoreShouldBe(FORTY_LOVE);
 });
