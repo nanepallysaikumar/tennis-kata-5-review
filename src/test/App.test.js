@@ -9,6 +9,7 @@ const {
   THIRTY_LOVE,
   FORTY_LOVE,
   LOVE_FIFTEEN,
+  LOVE_THIRTY,
   PLAYER_ONE,
   PLAYER_TWO,
   ZERO,
@@ -67,4 +68,10 @@ test("When the running point of player one is 0 and the running point of player 
   playerTwoScores(ONE_TIME);
 
   gameScoreShouldBe(LOVE_FIFTEEN);
+});
+
+test("When the running point of player one is 0 and the running point of player two is 2 then the running score should be Love-Thirty", () => {
+  playerTwoScores(TWO_TIMES);
+
+  gameScoreShouldBe(LOVE_THIRTY);
 });

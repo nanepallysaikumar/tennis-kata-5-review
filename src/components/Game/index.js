@@ -10,12 +10,13 @@ const {
   GAME_SCORE,
   POINT_ZERO,
   POINT_ONE,
+  POINT_TWO,
   PLAYER_ONE,
   PLAYER_TWO,
   POINT_THREE,
   TITLE,
 } = applicationConstants;
-const { LOVE_ALL, LOVE_FIFTEEN } = score;
+const { LOVE_ALL, LOVE_FIFTEEN, LOVE_THIRTY } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -37,6 +38,8 @@ const Game = () => {
       return `${scoreLookUp[playerOneScore]}-Love`;
     } else if (playerOneScore === POINT_ZERO && playerTwoScore === POINT_ONE) {
       return LOVE_FIFTEEN;
+    } else if (playerOneScore === POINT_ZERO && playerTwoScore === POINT_TWO) {
+      return LOVE_THIRTY;
     }
   };
 
