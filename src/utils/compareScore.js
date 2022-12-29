@@ -29,10 +29,6 @@ const isPlayerScoresTwo = (playerScore) => {
   return playerScore === POINT_TWO;
 };
 
-const isPlayerScoresThree = (playerScore) => {
-  return playerScore === POINT_THREE;
-};
-
 const hasAnyPlayersScored = (playerOneScore, playerTwoScore) => {
   return isPlayerScored(playerOneScore) || isPlayerScored(playerTwoScore);
 };
@@ -60,11 +56,15 @@ const isScoreDifferenceIsOne = (playerOneScore, playerTwoScore) => {
   return Math.abs(playerOneScore - playerTwoScore) === POINT_ONE;
 };
 
+const hasplayerScoresNotLessThanThree = (playerScore) => {
+  return playerScore >= POINT_THREE;
+};
+
 export {
   hasPlayersScoresEqual,
   isPlayerScoresOne,
   isPlayerScoresTwo,
-  isPlayerScoresThree,
+  hasplayerScoresNotLessThanThree,
   hasPlayersScoresDifferent,
   hasplayersScoresNotMoreThanThree,
   hasBothPlayersScored,
