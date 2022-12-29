@@ -5,9 +5,16 @@ import {
 } from "../../constants/applicationConstants";
 import "./index.css";
 
-const { GAME_SCORE, POINT_ZERO, POINT_ONE, PLAYER_ONE, PLAYER_TWO, TITLE } =
-  applicationConstants;
-const { LOVE_ALL, FIFTEEN_LOVE } = score;
+const {
+  GAME_SCORE,
+  POINT_ZERO,
+  POINT_ONE,
+  POINT_TWO,
+  PLAYER_ONE,
+  PLAYER_TWO,
+  TITLE,
+} = applicationConstants;
+const { LOVE_ALL, FIFTEEN_LOVE, THIRTY_LOVE } = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -20,6 +27,8 @@ const Game = () => {
   const calculateGameScore = () => {
     if (playerOneScore === POINT_ONE) {
       return FIFTEEN_LOVE;
+    } else if (playerOneScore === POINT_TWO) {
+      return THIRTY_LOVE;
     }
   };
 
