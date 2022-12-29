@@ -60,6 +60,10 @@ const hasplayerScoresNotLessThanThree = (playerScore) => {
   return playerScore >= POINT_THREE;
 };
 
+const isScoreDifferenceGreaterThanOne = (playerOneScore, playerTwoScore) => {
+  return playerOneScore - playerTwoScore > POINT_ONE;
+};
+
 export {
   hasPlayersScoresEqual,
   isPlayerScoresOne,
@@ -71,4 +75,6 @@ export {
   hasAnyPlayersScored,
   hasAnyPlayersScoresMoreThanThree,
   isScoreDifferenceIsOne,
+  isPlayerScoresMoreThanThree,
+  isScoreDifferenceGreaterThanOne,
 };
