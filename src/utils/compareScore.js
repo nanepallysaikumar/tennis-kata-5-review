@@ -61,7 +61,7 @@ const hasplayerScoresNotLessThanThree = (playerScore) => {
 };
 
 const isScoreDifferenceGreaterThanOne = (playerOneScore, playerTwoScore) => {
-  return playerOneScore - playerTwoScore > POINT_ONE;
+  return Math.abs(playerOneScore - playerTwoScore) > POINT_ONE;
 };
 
 export {
@@ -75,6 +75,5 @@ export {
   hasAnyPlayersScored,
   hasAnyPlayersScoresMoreThanThree,
   isScoreDifferenceIsOne,
-  isPlayerScoresMoreThanThree,
   isScoreDifferenceGreaterThanOne,
 };
