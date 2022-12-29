@@ -16,7 +16,14 @@ const {
   POINT_THREE,
   TITLE,
 } = applicationConstants;
-const { LOVE_ALL, LOVE_FIFTEEN, LOVE_THIRTY, LOVE_FORTY, FIFTEEN_ALL } = score;
+const {
+  LOVE_ALL,
+  LOVE_FIFTEEN,
+  LOVE_THIRTY,
+  LOVE_FORTY,
+  FIFTEEN_ALL,
+  THIRTY_ALL,
+} = score;
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -37,9 +44,17 @@ const Game = () => {
     return playerOneScore === POINT_ONE && playerTwoScore === POINT_ONE;
   };
 
+  const hasBothPlayerScoresTwoPoints = () => {
+    return playerOneScore === POINT_TWO && playerTwoScore === POINT_TWO;
+  };
+
   const calculateGameScore = () => {
     if (hasBothPlayersScoresOnePoint()) {
       return FIFTEEN_ALL;
+    }
+
+    if (hasBothPlayerScoresTwoPoints()) {
+      return THIRTY_ALL;
     }
 
     if (isPlayersScoresNotMoreThanThreePoints()) {
