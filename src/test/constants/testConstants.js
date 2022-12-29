@@ -15,6 +15,7 @@ const testConstants = {
   THREE_TIMES: 3,
   FIFTEEN_ALL: "Fifteen-All",
   THIRTY_ALL: "Thirty-All",
+  DEUCE: "Deuce",
 };
 
 export { testConstants };

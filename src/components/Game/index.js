@@ -23,6 +23,7 @@ const {
   LOVE_FORTY,
   FIFTEEN_ALL,
   THIRTY_ALL,
+  DEUCE,
 } = score;
 
 const Game = () => {
@@ -48,6 +49,10 @@ const Game = () => {
     return playerOneScore === POINT_TWO && playerTwoScore === POINT_TWO;
   };
 
+  const hasBothPlayerScoresThreePoints = () => {
+    return playerOneScore === POINT_THREE && playerTwoScore === POINT_THREE;
+  };
+
   const calculateGameScore = () => {
     if (hasBothPlayersScoresOnePoint()) {
       return FIFTEEN_ALL;
@@ -55,6 +60,10 @@ const Game = () => {
 
     if (hasBothPlayerScoresTwoPoints()) {
       return THIRTY_ALL;
+    }
+
+    if (hasBothPlayerScoresThreePoints()) {
+      return DEUCE;
     }
 
     if (isPlayersScoresNotMoreThanThreePoints()) {
