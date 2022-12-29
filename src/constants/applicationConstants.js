@@ -7,6 +7,8 @@ const applicationConstants = {
   POINT_TWO: 2,
   POINT_THREE: 3,
   POINT_ZERO: 0,
+  ALL: "All",
+  HYPHEN: "-",
 };
 
 const score = {

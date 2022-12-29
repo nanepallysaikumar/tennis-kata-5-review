@@ -2,29 +2,20 @@ import React, { useState, useEffect } from "react";
 import {
   applicationConstants,
   score,
-  scoreLookUp,
 } from "../../constants/applicationConstants";
+import { bothScoredPointOneOrTwo } from "./rules/bothScoredSame";
+import { deuce } from "./rules/deuce";
+import { differentScoresBetweenOneAndThree } from "./rules/differentScore";
 import "./index.css";
 
-const {
-  GAME_SCORE,
-  POINT_ZERO,
-  POINT_ONE,
-  POINT_TWO,
-  PLAYER_ONE,
-  PLAYER_TWO,
-  POINT_THREE,
-  TITLE,
-} = applicationConstants;
-const {
-  LOVE_ALL,
-  LOVE_FIFTEEN,
-  LOVE_THIRTY,
-  LOVE_FORTY,
-  FIFTEEN_ALL,
-  THIRTY_ALL,
-  DEUCE,
-} = score;
+const { GAME_SCORE, POINT_ZERO, POINT_ONE, PLAYER_ONE, PLAYER_TWO, TITLE } =
+  applicationConstants;
+const { LOVE_ALL } = score;
+const rules = [
+  deuce,
+  bothScoredPointOneOrTwo,
+  differentScoresBetweenOneAndThree,
+];
 
 const Game = () => {
   const [gameScore, setGameScore] = useState(LOVE_ALL);
@@ -37,37 +28,11 @@ const Game = () => {
       : setPlayerTwoScore(playerTwoScore + POINT_ONE);
   };
 
-  const isPlayersScoresNotMoreThanThreePoints = () => {
-    return playerOneScore <= POINT_THREE && playerTwoScore <= POINT_THREE;
-  };
-
-  const hasBothPlayersScoresOnePoint = () => {
-    return playerOneScore === POINT_ONE && playerTwoScore === POINT_ONE;
-  };
-
-  const hasBothPlayerScoresTwoPoints = () => {
-    return playerOneScore === POINT_TWO && playerTwoScore === POINT_TWO;
-  };
-
-  const hasBothPlayerScoresThreePoints = () => {
-    return playerOneScore === POINT_THREE && playerTwoScore === POINT_THREE;
-  };
-
   const calculateGameScore = () => {
-    if (hasBothPlayersScoresOnePoint()) {
-      return FIFTEEN_ALL;
-    }
-
-    if (hasBothPlayerScoresTwoPoints()) {
-      return THIRTY_ALL;
-    }
-
-    if (hasBothPlayerScoresThreePoints()) {
-      return DEUCE;
-    }
-
-    if (isPlayersScoresNotMoreThanThreePoints()) {
-      return `${scoreLookUp[playerOneScore]}-${scoreLookUp[playerTwoScore]}`;
+    for (const rule of rules) {
+      if (rule.isCriteriaMatched(playerOneScore, playerTwoScore)) {
+        return rule.getScore(playerOneScore, playerTwoScore);
+      }
     }
   };
 
