@@ -29,22 +29,13 @@ const Game = () => {
       : setPlayerTwoScore(playerTwoScore + POINT_ONE);
   };
 
-  const isPlayerOneScoreBetweenOneAndThree = () => {
-    return playerOneScore >= POINT_ONE && playerOneScore <= POINT_THREE;
+  const isPlayersScoresNotMoreThanThreePoints = () => {
+    return playerOneScore <= POINT_THREE && playerTwoScore <= POINT_THREE;
   };
 
   const calculateGameScore = () => {
-    if (isPlayerOneScoreBetweenOneAndThree() && playerTwoScore === POINT_ZERO) {
-      return `${scoreLookUp[playerOneScore]}-Love`;
-    } else if (playerOneScore === POINT_ZERO && playerTwoScore === POINT_ONE) {
-      return LOVE_FIFTEEN;
-    } else if (playerOneScore === POINT_ZERO && playerTwoScore === POINT_TWO) {
-      return LOVE_THIRTY;
-    } else if (
-      playerOneScore === POINT_ZERO &&
-      playerTwoScore === POINT_THREE
-    ) {
-      return LOVE_FORTY;
+    if (isPlayersScoresNotMoreThanThreePoints()) {
+      return `${scoreLookUp[playerOneScore]}-${scoreLookUp[playerTwoScore]}`;
     }
   };
 
